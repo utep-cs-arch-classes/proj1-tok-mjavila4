@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include "tokenizer.h"
 
+#define LIMIT 100
+char arr[LIMIT];
+
 void main(){
 
-  int c;
+  int i = 0;
 
-  c = getchar();
+  for(char input_char; (input_char = getchar()) != '\n' && i < LIMIT; i++){
 
-  while(c != EOF){
-
-    putchar(c);
-    c = getchar();
+    arr[i] = input_char;
+    putchar(input_char);
 
   }
 
+  printf("\n");
+  
 }
