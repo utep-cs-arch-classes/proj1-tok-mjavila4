@@ -15,3 +15,17 @@ void main(){
   input[i] = '\0';
   
 }
+
+int space_char(char c){
+  if(c == ' ' || c == '\n' || c == '\t'){
+    return 1;
+  }
+  return 0;
+}
+
+int non_space_char(char c){
+  if(c == ' ' || c == '\n' || c == '\t'){
+    return 0;
+  }
+  return 1;
+}
