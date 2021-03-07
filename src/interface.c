@@ -1,20 +1,22 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "tokenizer.h"
 
-#define LIMIT 99
+#define LIMIT 100
 
 void main(){
   
   int i;
   char c;
-  char input[LIMIT];
+  char *input = (char*)malloc(LIMIT);
 
-  for(i = 0; (c = getchar()) != '\n' && i < LIMIT; i++){
-    input[i] = c;
+  for(i = 0; (c = getchar()) != '\n' && i < LIMIT-1; i++){
+    *(input+i) = c;
   }
-  input[i] = '\0';
+  
+  *(input+99) = '\0';
 
-  printf("\n%d", count_words(input));
+  printf("%s\n", input);
   
 }
 
