@@ -17,6 +17,8 @@ void main(){
   *(input+99) = '\0';
 
   printf("%s\n", input);
+
+  printf("%s\n", copy_str(input, 5));
   
 }
 
@@ -61,3 +63,25 @@ int count_words(char *str){
   }
   return i;
 }
+
+char *copy_str(char *inStr, short len){
+  int i;
+  char *copy = (char*)malloc(len+1);
+
+  for(i = 0; i<len; i++){
+    *(copy+i) = *(inStr+i);
+  }
+  *(copy+i) = '\0';
+  return copy;
+}
+
+
+
+
+
+
+
+
+
+
+
