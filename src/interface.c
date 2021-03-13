@@ -6,23 +6,34 @@
 #define LIMIT 100
 
 void main(){
-  
-  int i;
-  char c;
-  char *input = (char*)malloc(sizeof(char)*LIMIT);
-
-  for(i = 0; (c = getchar()) != '\n' && i < LIMIT-1; i++){
-    *(input+i) = c;
-  }
-  *(input+i) = '\0';
-
-  char **tokens = tokenize(input);
 
   List *list = init_history();
+  int counter = 0;
 
-  add_history(list,input);
+  while(1){
 
-  print_history(list);
+    setbuf(stdout, NULL);
+    printf("\n$ ");
+
+    char c;
+    int i;
+    char *input = (char*)malloc(sizeof(char)*LIMIT);
+
+    for(i = 0; (c = getchar()) != '\n' && i < LIMIT-1; i++){
+	*(input+i) = c;
+	setbuf(stdout, NULL);
+    }
+    *(input+i) = '\0';
+
+    char **tokens = tokenize(input);
+    print_tokens(tokens);
+
+    add_history(list, input);
+    counter++;
+    free_tokens(tokens);
+    
+
+  }
   
 }
 
