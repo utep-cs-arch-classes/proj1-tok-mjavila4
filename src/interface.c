@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tokenizer.h"
+#include "history.h"
 
 #define LIMIT 100
 
@@ -16,7 +17,12 @@ void main(){
   *(input+i) = '\0';
 
   char **tokens = tokenize(input);
-  print_tokens(tokens);
+
+  List *list = init_history();
+
+  add_history(list,input);
+
+  print_history(list);
   
 }
 
